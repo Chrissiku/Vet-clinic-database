@@ -89,4 +89,5 @@ DELETE FROM animals;
 -- Roll back the transaction
 ROLLBACK TO sp1;
 -- Verify that the table is not empty
+COMMIT; /*END TRANSACTION*/
 SELECT * FROM animals;
