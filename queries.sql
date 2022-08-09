@@ -52,3 +52,10 @@ SET species = 'unspecified';
 
 -- Verify that change was made
 select * from animals
+
+-- Roll back the change
+ROLLBACK TO sp1;
+-- verify that the species columns went back to the state before the transaction
+select * from animals
+-- Commit the change 
+COMMIT; /*This command end the transaction
