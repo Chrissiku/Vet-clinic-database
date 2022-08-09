@@ -43,3 +43,12 @@ FROM animals
 WHERE weight_kg 
 BETWEEN 10.4 AND 17.3;
 
+
+-- Inside a transaction Update the animals table by setting the species column to 'unspecified'
+BEGIN;
+SAVEPOINT sp1;
+UPDATE animals 
+SET species = 'unspecified';
+
+-- Verify that change was made
+select * from animals
