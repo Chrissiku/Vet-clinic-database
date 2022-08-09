@@ -75,6 +75,18 @@ SET species = 'pokemon '
 WHERE species IS NULL;
 
 -- Commit the transaction.
-COMMIT;
+COMMIT; /*END OF TRANSACTION*/
 -- Verify that change was made and persists after commit.
+SELECT * FROM animals;
+
+
+
+-- NEW TRANSACTION
+BEGIN;
+SAVEPOINT sp1;
+--  delete all records in the animals table
+DELETE FROM animals;
+-- Roll back the transaction
+ROLLBACK TO sp1;
+-- Verify that the table is not empty
 SELECT * FROM animals;
