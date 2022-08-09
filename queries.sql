@@ -95,4 +95,7 @@ SELECT * FROM animals;
 
 -- NEW TRANSACTION
 BEGIN;
+SAVEPOINT sp1;
 DELETE FROM animals WHERE date_of_birth > '01/01/2022';
+-- Rollback to the savepoint
+ROLLBACK TO sp1;
