@@ -91,3 +91,8 @@ ROLLBACK TO sp1;
 -- Verify that the table is not empty
 COMMIT; /*END TRANSACTION*/
 SELECT * FROM animals;
+
+
+-- NEW TRANSACTION
+BEGIN;
+DELETE FROM animals WHERE date_of_birth > '01/01/2022';
