@@ -58,4 +58,23 @@ ROLLBACK TO sp1;
 -- verify that the species columns went back to the state before the transaction
 select * from animals
 -- Commit the change 
-COMMIT; /*This command end the transaction
+COMMIT; /*This command end the transaction */
+
+-- NEW TRANSACTION
+BEGIN;
+-- Update the animals table by setting the species column to digimon for all animals that have a name ending in mon.
+SAVEPOINT sp1;
+UPDATE animals 
+SET species = 'digimon'
+WHERE name LIKE '%mon';
+
+-- Update the animals table by setting the species column to pokemon for all animals that don't have species already set.
+SAVEPOINT sp2;
+UPDATE animals 
+SET species = 'pokemon '
+WHERE species IS NULL;
+
+-- Commit the transaction.
+COMMIT;
+-- Verify that change was made and persists after commit.
+SELECT * FROM animals;
