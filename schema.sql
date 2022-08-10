@@ -39,3 +39,9 @@ ALTER TABLE animals ADD PRIMARY KEY (id);
 
 -- set id column of animals table as autoincrement primary key.
 ALTER TABLE animals ALTER COLUMN id SET DEFAULT nextval('animals_pkey');
+
+-- Add columns species_id as foreign key to animals table.
+ALTER TABLE animals ADD COLUMN species_id INT REFERENCES species(id);
+
+-- Add columns owner_id as foreign key to animals table.
+ALTER TABLE animals ADD COLUMN owner_id INT REFERENCES owners(id);
