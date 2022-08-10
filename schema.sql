@@ -30,3 +30,7 @@ CREATE TABLE species(
     name VARCHAR NOT NULL,
     PRIMARY KEY (id)
 );
+
+-- Edit the animals table to drop the species column.
+ALTER TABLE animals DROP COLUMN species;
+
