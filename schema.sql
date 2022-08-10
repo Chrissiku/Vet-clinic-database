@@ -36,3 +36,6 @@ ALTER TABLE animals DROP COLUMN species;
 
 -- Add primary key to id column of animals table.
 ALTER TABLE animals ADD PRIMARY KEY (id);
+
+-- set id column of animals table as autoincrement primary key.
+ALTER TABLE animals ALTER COLUMN id SET DEFAULT nextval('animals_pkey');
