@@ -57,11 +57,118 @@ UPDATE
     animals
 SET
     species_id = 1
-WHERE species_id IS NULL;
+WHERE
+    species_id IS NULL;
 
 -- Edit owner_id column for the animals table.
-UPDATE animals SET owner_id = 1 WHERE name = 'Agumon';
-UPDATE animals SET owner_id = 2 WHERE name IN ('Gabumon', 'Pikachu');
-UPDATE animals SET owner_id = 3 WHERE name IN ('Devimon', 'Plantmon');
-UPDATE animals SET owner_id = 4 WHERE name IN ('Charmander', 'Squirtle', 'Blossom');
-UPDATE animals SET owner_id = 5 WHERE name IN ('Angemon', 'Boarmon');
+UPDATE
+    animals
+SET
+    owner_id = 1
+WHERE
+    name = 'Agumon';
+
+UPDATE
+    animals
+SET
+    owner_id = 2
+WHERE
+    name IN ('Gabumon', 'Pikachu');
+
+UPDATE
+    animals
+SET
+    owner_id = 3
+WHERE
+    name IN ('Devimon', 'Plantmon');
+
+UPDATE
+    animals
+SET
+    owner_id = 4
+WHERE
+    name IN ('Charmander', 'Squirtle', 'Blossom');
+
+UPDATE
+    animals
+SET
+    owner_id = 5
+WHERE
+    name IN ('Angemon', 'Boarmon');
+
+-- Answer some questions using JOIN.
+-- 1. What animals belong to Melody Pond? 
+SELECT
+    name
+FROM
+    animals
+    JOIN owners ON animals.owner_id = owners.id
+WHERE
+    owners.full_name = 'Melody Pond';
+
+-- => Squirtle, Charmander, Blossom.
+-- 2. List of all animals that are pokemon.
+SELECT
+    animals.name
+FROM
+    animals
+    JOIN species ON animals.species_id = species.id
+WHERE
+    species.name = 'Pokemon';
+
+-- => Ditto, Pikachu, Blossom, Charmander, Squirtle
+-- 3. List all owners and their animals.
+SELECT
+    owners.full_name,
+    animals.name
+FROM
+    owners
+    LEFT JOIN animals ON owners.id = animals.owner_id;
+
+-- 4. How many animals are there per species?
+SELECT
+    species.name AS Specie_name,
+    COUNT(animals.name) as Number_of_animals
+FROM
+    species
+    JOIN animals ON species.id = animals.species_id
+GROUP BY
+    Specie_name;
+
+--=>specie_name | number_of_animals
+-- -------------+-------------------
+--  Pokemon     |                 5
+--  Digimon     |                 6
+-- (2 lignes)
+-- 5. List all Digimon owned by jennifer Orwell.
+SELECT
+    animals.name
+FROM
+    animals
+    JOIN owners ON animals.owner_id = owners.id
+WHERE
+    owners.full_name = 'Jennifer Orwell';
+
+-- =>  Pikachu, Gabumon
+-- 6. List all animals owned by Dean Wincheste that haven't tried to escape.
+SELECT
+    animals.name
+FROM
+    animals
+    JOIN owners ON animals.owner_id = owners.id
+WHERE
+    owners.full_name = 'Dean Wincheste'
+    AND animals.escape_attempts = 0;
+
+-- => 0;
+-- 7. Who owns the most animals?   
+SELECT
+    owners.full_name as owner_full_name,
+    COUNT(animals.name) AS Number_of_animals
+FROM
+    owners
+    LEFT JOIN animals ON owners.id = animals.owner_id
+GROUP BY
+    owner_full_name
+ORDER BY
+    Number_of_animals DESC;
