@@ -69,3 +69,9 @@ CREATE TABLE vets(
     date_fo_graduation DATE,
     PRIMARY KEY (id)
 );
+
+-- Create a join table to store species and vets.
+CREATE TABLE specialization(
+    species_id INT REFERENCES species(id),
+    vet_id INT REFERENCES vets(id)
+);
