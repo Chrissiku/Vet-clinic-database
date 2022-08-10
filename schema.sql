@@ -75,3 +75,10 @@ CREATE TABLE specialization(
     species_id INT REFERENCES species(id),
     vet_id INT REFERENCES vets(id)
 );
+
+-- Create a join table to store animals and vets.
+CREATE TABLE visits(
+    animal_id INT REFERENCES animals(id),
+    vet_id INT REFERENCES vets(id),
+    date_of_visit DATE
+);
