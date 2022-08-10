@@ -51,3 +51,10 @@ INSERT INTO
 VALUES
     ('Pokemon'),
     ('Digimon');
+
+-- Edit species column for the animals table.
+UPDATE
+    animals
+SET
+    species_id = 1
+WHERE species_id IS NULL;
