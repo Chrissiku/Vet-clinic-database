@@ -34,3 +34,5 @@ CREATE TABLE species(
 -- Edit the animals table to drop the species column.
 ALTER TABLE animals DROP COLUMN species;
 
+-- Add primary key to id column of animals table.
+ALTER TABLE animals ADD PRIMARY KEY (id);
