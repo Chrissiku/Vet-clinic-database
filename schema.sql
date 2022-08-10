@@ -32,16 +32,53 @@ CREATE TABLE species(
 );
 
 -- Edit the animals table to drop the species column.
-ALTER TABLE animals DROP COLUMN species;
+ALTER TABLE
+    animals DROP COLUMN species;
 
 -- Add primary key to id column of animals table.
-ALTER TABLE animals ADD PRIMARY KEY (id);
+ALTER TABLE
+    animals
+ADD
+    PRIMARY KEY (id);
 
 -- set id column of animals table as autoincrement primary key.
-ALTER TABLE animals ALTER COLUMN id SET DEFAULT nextval('animals_pkey');
+ALTER TABLE
+    animals
+ALTER COLUMN
+    id
+SET
+    DEFAULT nextval('animals_pkey');
 
 -- Add columns species_id as foreign key to animals table.
-ALTER TABLE animals ADD COLUMN species_id INT REFERENCES species(id);
+ALTER TABLE
+    animals
+ADD
+    COLUMN species_id INT REFERENCES species(id);
 
 -- Add columns owner_id as foreign key to animals table.
-ALTER TABLE animals ADD COLUMN owner_id INT REFERENCES owners(id);
+ALTER TABLE
+    animals
+ADD
+    COLUMN owner_id INT REFERENCES owners(id);
+
+-- Create the vets to store vets.
+CREATE TABLE vets(
+    id INT GENERATED ALWAYS AS IDENTITY NOT NULL,
+    name VARCHAR NOT NULL,
+    age INT NOT NULL,
+    date_fo_graduation DATE,
+    PRIMARY KEY (id)
+);
+
+-- Create a join table to store species and vets.
+CREATE TABLE specialization(
+    species_id INT REFERENCES species(id),
+    vet_id INT REFERENCES vets(id)
+);
+
+-- Create a join table to store animals and vets.
+CREATE TABLE visits(
+    animal_id INT REFERENCES animals(id),
+    vet_id INT REFERENCES vets(id),
+    date_of_visit DATE
+);
