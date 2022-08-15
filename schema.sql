@@ -84,4 +84,16 @@ CREATE TABLE visits(
 );
 
 -- Add new column to owners table.
-ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+ALTER TABLE
+    owners
+ADD
+    COLUMN email VARCHAR(120);
+
+-- Alter owners table set age to null.
+ALTER TABLE
+    owners
+ALTER COLUMN
+    age DROP NOT NULL;
+
+-- Create Index on animal_id column of visits table.
+CREATE INDEX animal_id_asc ON visits(animal_id asc);
