@@ -19,6 +19,12 @@ This repository includes files with plain SQL that can be used to recreate a dat
 - Twitter: [@twitterhandle](https://twitter.com/christian_siku)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/chris-siku-4bb53b232/)
 
+👤 **Victor David**
+
+- GitHub: [@githubhandle](https://github.com/jheart-vic)
+- Twitter: [@twitterhandle](https://twitter.com/Victorjheart)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/victor-chiemerie-302a97230/)
+
 
 ## 🤝 Contributing
 
