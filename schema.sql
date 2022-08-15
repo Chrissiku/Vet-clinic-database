@@ -97,3 +97,10 @@ ALTER COLUMN
 
 -- Create Index on animal_id column of visits table.
 CREATE INDEX animal_id_asc ON visits(animal_id asc);
+
+-- Create Index on vet_id column of visits table.
+CREATE INDEX  vet_id_asc ON visits(vet_id asc);
+
+-- Create Index  owners_email on email column of owners table.
+CREATE INDEX  owners_email  ON owners(email);
+
