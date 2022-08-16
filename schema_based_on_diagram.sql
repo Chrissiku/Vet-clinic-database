@@ -30,3 +30,15 @@ CREATE TABLE invoice (
     medical_history_id INT NOT NULL,
     foreign key (medical_history_id) references medical_histories(id)
 );
+
+
+-- create table named invoice_items.
+CREATE TABLE invoice_items (
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    unit_price DECIMAL NOT NULL,
+    quantity INT NOT NULL,
+    total_price DECIMAL NOT NULL,
+    invoice_id INT NOT NULL,
+    treatment_id INT NOT NULL,
+    foreign key (invoice_id) references invoice(id)
+);
