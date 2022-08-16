@@ -31,7 +31,6 @@ CREATE TABLE invoice (
     foreign key (medical_history_id) references medical_histories(id)
 );
 
-
 -- create table named invoice_items.
 CREATE TABLE invoice_items (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -41,4 +40,11 @@ CREATE TABLE invoice_items (
     invoice_id INT NOT NULL,
     treatment_id INT NOT NULL,
     foreign key (invoice_id) references invoice(id)
+);
+
+-- creta table named treatments.
+CREATE TABLE treatments (
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    type VARCHAR NOT NULL,
+    name VARCHAR NOT NULL
 );
