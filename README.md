@@ -1,6 +1,6 @@
 # Vet clinic database
 
-> In the project projects, I use a relational database to create the data structure for a vet clinic.
+> In the project projects, we use a relational database to create the data structure for a vet clinic.
 
 
 ## Getting Started
