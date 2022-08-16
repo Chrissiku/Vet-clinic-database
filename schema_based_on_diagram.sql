@@ -48,3 +48,9 @@ CREATE TABLE treatments (
     type VARCHAR NOT NULL,
     name VARCHAR NOT NULL
 );
+
+-- alter table invoice_items add foreign key treatment_id to treatment.id.
+ALTER TABLE
+    invoice_items
+ADD
+    CONSTRAINT FK_treatment_id FOREIGN KEY (treatment_id) REFERENCES treatments(id);
