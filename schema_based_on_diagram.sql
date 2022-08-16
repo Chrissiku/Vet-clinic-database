@@ -54,3 +54,11 @@ ALTER TABLE
     invoice_items
 ADD
     CONSTRAINT FK_treatment_id FOREIGN KEY (treatment_id) REFERENCES treatments(id);
+
+    -- create join table for medical_histories and treatments.
+CREATE TABLE medical_histories_treatments (
+    medical_history_id INT NOT NULL,
+    treatment_id INT NOT NULL,
+    foreign key (medical_history_id) references medical_histories(id),
+    foreign key (treatment_id) references treatments(id)
+);
